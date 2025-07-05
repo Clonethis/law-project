@@ -22,7 +22,10 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const auth = getAuth(app);
-const analytics = getAnalytics(app);
+let analytics;
+if (typeof window !== "undefined") {
+  analytics = getAnalytics(app);
+}
 const storage = getStorage(app);
 
 export { app, auth, storage,analytics };
